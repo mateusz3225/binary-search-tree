@@ -87,9 +87,9 @@ function find(root,value) {
 }
    
 function levelOrderForEach(root,callback, array = [root]) {
-    //if (!callback) {
-    //    throw new Error("Provide a callback function");
-    //}
+    if (!callback) {
+        throw new Error("Provide a callback function");
+    }
     while (array.length > 0) {
 
        callback(array[0]);
@@ -102,19 +102,27 @@ function levelOrderForEach(root,callback, array = [root]) {
     array.shift();
 }}
 function PreOrderForEach(root,callback) {
+    if (!callback) {
+        throw new Error("Provide a callback function");
+    }
     if (root == null) return;
     inOrderForEach(root.left,callback);
     callback(root);
     inOrderForEach(root.right,callback);
 }
 function inOrderForEach(root,callback) {
+    if (!callback) {
+        throw new Error("Provide a callback function");
+    }
   if (root == null) return;
     callback(root);
     inOrderForEach(root.left,callback);
     inOrderForEach(root.right,callback);
 }
 function postOrderForEach(root,callback) {
-      
+    if (!callback) {
+        throw new Error("Provide a callback function");
+    }
     inOrderForEach(root.left,callback);
     inOrderForEach(root.right,callback);
     callback(root);
